@@ -1,0 +1,7 @@
+[Server]
+  Port = 8888
+  Name = "Hello world"
+
+[Players]
+  Folder_player = "Players"
+  Max_count = 10
