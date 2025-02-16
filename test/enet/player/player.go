@@ -1,17 +1,17 @@
 package player
 
-import "github.com/google/uuid"
+import (
+	"github.com/go-gl/mathgl/mgl64"
+	"github.com/google/uuid"
+)
 
 type PlayerData struct {
 	uuid uuid.UUID
 	username string
 	name string
-	x,y int
-	gender uint8
-}
-
-func NewPlayer(uuid uuid.UUID, username string, gender uint8) *PlayerData {
-	return &PlayerData{uuid: uuid, username: username, name: username, gender: gender, x: 0, y: 0}
+	position mgl64.Vec2
+	speed int8
+	health, maxhealth int16
 }
 
 func (p *PlayerData) GetUUID() uuid.UUID {

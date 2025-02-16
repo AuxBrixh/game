@@ -1,18 +1,11 @@
 local enet = require("enet")
 local host = enet.host_create()
 host:connect("localhost:8888")
-while true do
-  local event = host:service(100)
-  while event do
-    if event.type == "receive" then
-      print("Got message: ", event.data, event.peer)
-      event.peer:send( "bye" )
-    elseif event.type == "connect" then
-      print(event.peer, "connected.")
-      event.peer:send( "ping" )
-    elseif event.type == "disconnect" then
-      print(event.peer, "disconnected.")
-    end
-    event = host:service()
+local event = host:service(100)
+while event do
+  if event.type == "connect" then
+    print(event.peer)
+    event.peer:send("DATA")
   end
+  event = host:service()
 end

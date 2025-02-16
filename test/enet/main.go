@@ -14,5 +14,5 @@ func main() {
 
 	srv := conf.New()
 	srv.Listen()
-	srv.Wait()
+	select {}
 }
